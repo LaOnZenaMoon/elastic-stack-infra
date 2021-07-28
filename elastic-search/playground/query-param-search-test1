@@ -1,0 +1,13 @@
+GET /_search
+
+GET /kibana_sample_data_flights/_search
+
+GET /kibana_sample_data_flights/_doc/_search
+
+GET /kibana_sample_data_flights/_search?q=Sunny
+
+GET /kibana_sample_data_flights/_search?q=OriginWeather:Sunny AND OriginCountry:AU
+
+GET /kibana_sample_data_flights/_search?q=OriginWeather:Sunny AND OriginCountry:AU&explain
+
+GET /kibana_sample_data_flights/_search?q=OriginWeather:Sunny AND OriginCountry:AU&_source=OriginWeather,DestCountry,AvgTicketPrice&sort=AvgTicketPrice
