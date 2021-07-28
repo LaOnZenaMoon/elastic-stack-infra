@@ -1,0 +1,32 @@
+# test1
+PUT /customer?pretty
+
+# test2
+GET _cat/indices?v
+
+# test3
+POST /customer/type1/1
+{
+  "name": "junlee",
+  "age": 29
+}
+
+
+POST /customer/type1/1/_update
+{
+  "doc": {
+    "age": 30
+  }
+}
+
+
+POST /customer/type1/1/_update
+{
+  "script": {
+    "inline": "if(ctx._source.age == 30) {ctx._source.age++}"
+  }
+}
+
+GET /customer/type1/1
+
+DELETE /customer/type1/1
