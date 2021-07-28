@@ -1,0 +1,59 @@
+# Search API Query
+
+GET _cat/indices
+
+GET /kibana_sample_data_flights/_search?q=*
+
+GET /kibana_sample_data_flights/_search?q=*&sort=AvgTicketPrice
+
+POST /kibana_sample_data_flights/_search
+{
+  "query": {"match_all": {}},
+  "sort": [
+    {
+      "AvgTicketPrice": "asc"
+    }
+  ]
+}
+
+POST /kibana_sample_data_flights/_search
+{
+  "query": {"match": {
+    "DestCountry": "AU"
+  }},
+  "sort": [
+    {
+      "AvgTicketPrice": "desc"
+    }
+  ],
+  "_source": ["AvgTicketPrice", "FlightNum"]
+}
+
+POST /kibana_sample_data_flights/_search
+{
+  "query": {"match_phrase": {
+    "DestCountry": "AU"
+  }},
+  "sort": [
+    {
+      "AvgTicketPrice": "desc"
+    }
+  ],
+  "_source": ["AvgTicketPrice", "FlightNum"]
+}
+
+POST /kibana_sample_data_flights/_search
+{
+  "query": {"bool": {
+    "must": [
+      {"match": {
+        "DestCountry": "AU"
+      }}
+    ],
+    "must_not": [
+      {"match": {
+        "FlightNum" : "BKVUOVI"
+      }}
+    ]
+  }}
+}
