@@ -1,0 +1,65 @@
+POST /tourcompany/customerlist/1
+{
+  "name": "Alfred",
+  "phone": "010-1234-5678",
+  "holyday_dest": "Disneyland",
+  "departure_date": "2021/01/20"
+}
+
+POST /tourcompany/customerlist/2
+{
+  "name": "Huey",
+  "phone": "010-2222-4444",
+  "holyday_dest": "Disneyland",
+  "departure_date": "2021/01/20"
+}
+
+POST /tourcompany/customerlist/3
+{
+  "name": "Naomi",
+  "phone": "010-3333-5555",
+  "holyday_dest": "Hawaii",
+  "departure_date": "2021/01/10"
+}
+
+POST /tourcompany/customerlist/4
+{
+  "name": "Andra",
+  "phone": "010-6666-7777",
+  "holyday_dest": "Bora Bora",
+  "departure_date": "2021/01/11"
+}
+
+POST /tourcompany/customerlist/5
+{
+  "name": "Paul",
+  "phone": "010-9999-8888",
+  "holyday_dest": "Hawaii",
+  "departure_date": "2021/01/10"
+}
+
+POST /tourcompany/customerlist/6
+{
+  "name": "Colin",
+  "phone": "010-5555-4444",
+  "holyday_dest": "Venice",
+  "departure_date": "2021/01/16"
+}
+
+DELETE /tourcompany/customerlist/4
+
+POST /tourcompany/customerlist/3/_update
+{
+  "doc": {
+    "departure_date": "2021/01/17"
+  }
+}
+
+POST /tourcompany/customerlist/5/_update
+{
+  "doc": {
+    "departure_date": "2021/01/17"
+  }
+}
+
+GET /tourcompany/customerlist/3
