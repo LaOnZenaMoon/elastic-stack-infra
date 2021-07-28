@@ -1,0 +1,14 @@
+POST /customer/type1/_bulk
+{"index": {"_id": "1"}}
+{"name": "Jun Lee"}
+{"index": {"_id": "2"}}
+{"name": "Kim"}
+
+GET /customer/type1/1
+
+GET /customer/type1/2
+
+POST /customer/type1/_bulk
+{"update": {"_id": "1"}}
+{"doc": {"age": 18}}
+{"delete": {"_id": "2"}}
