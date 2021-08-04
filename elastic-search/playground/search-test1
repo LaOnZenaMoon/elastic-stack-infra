@@ -1,0 +1,41 @@
+POST /tourcompany/customerlist/_bulk
+{"index": {"_id": "1"}}
+{ "name": "Alfred", "phone": "010-1234-5678", "holyday_dest": "Disneyland", "departure_date": "2021/01/20" }
+{"index": {"_id": "2"}}
+{ "name": "Huey", "phone": "010-2222-4444", "holyday_dest": "Disneyland", "departure_date": "2021/01/20" }
+{"index": {"_id": "3"}}
+{ "name": "Naomi", "phone": "010-3333-5555", "holyday_dest": "Hawaii", "departure_date": "2021/01/10" }
+{"index": {"_id": "4"}}
+{ "name": "Andra", "phone": "010-6666-7777", "holyday_dest": "Bora Bora", "departure_date": "2021/01/11" }
+{"index": {"_id": "5"}}
+{ "name": "Paul", "phone": "010-9999-8888", "holyday_dest": "Hawaii", "departure_date": "2021/01/10" }
+{"index": {"_id": "6"}}
+{ "name": "Colin", "phone": "010-5555-4444", "holyday_dest": "Venice", "departure_date": "2021/01/16" }
+
+GET /tourcompany/customerlist/_search?q="010-3333-5555"
+
+GET /tourcompany/customerlist/_search?q="Disneyland"&_source=phone,holiday_dest
+
+GET /tourcompany/customerlist/_search?q="2021/01/01/10" or "2021/01/11"&sort=name.keyword
+
+GET /tourcompany/customerlist/_search?q="Bora Bora"
+
+POST /tourcompany/customerlist/_delete_by_query?q="Bora Bora"
+
+POST /tourcompany/customerlist/_update_by_query
+{
+  "script": {"inline": "ctx._source.departure_date='2021/01/17'",
+    "lang": "painless"
+  },
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"departure_date": "2021/01/10"}},
+        {"match": {"holyday_dest": "Hawaii"}
+        }
+      ]
+    }
+  }
+}
+
+GET /tourcompany/customerlist/_search?q=Hawaii
