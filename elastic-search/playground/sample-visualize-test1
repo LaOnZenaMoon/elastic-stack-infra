@@ -1,0 +1,61 @@
+PUT /shakespeare
+{
+  "mappings": {
+    "properties": {
+    "speaker": {"type": "keyword"},
+    "play_name": {"type": "keyword"},
+    "line_id": {"type": "integer"},
+    "speech_number": {"type": "integer"}
+    }
+  }
+}
+
+
+PUT /logstash-2015.05.18
+{
+  "mappings": {
+    "properties": {
+      "geo": {
+        "properties": {
+          "coordinates": {
+            "type": "geo_point"
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT /logstash-2015.05.19
+{
+  "mappings": {
+    "properties": {
+      "geo": {
+        "properties": {
+          "coordinates": {
+            "type": "geo_point"
+          }
+        }
+      }
+    }
+  }
+}
+
+PUT /logstash-2015.05.20
+{
+  "mappings": {
+    "properties": {
+      "geo": {
+        "properties": {
+          "coordinates": {
+            "type": "geo_point"
+          }
+        }
+      }
+    }
+  }
+}
+
+GET /_cat/thread_pool?v
+
+GET /logstash-2015.05.18/_search
