@@ -1,0 +1,46 @@
+POST test/data
+{
+  "제목":"안녕하세요.",
+  "내용":"안녕하세요. 최일선입니다.",
+  "날짜":"2019-12-28",
+  "비밀번호":"1234"
+}
+
+GET /test/_search
+
+GET /test/_search?q="안녕"
+
+GET /test/_search?q="안녕하세요"
+
+POST /_analyze
+{
+    "analyzer": "nori",
+    "text": "역곡역 주변에 프로젝트 사무실이 생겼습니다."
+}
+
+PUT korean_analyzer1
+{
+    "settings":{
+        "analysis":{
+            "tokenizer":{
+                "korean_nori_tokenizer":{
+                    "type":"nori_tokenizer",
+                    "decompound_mode":"mixed",
+                    "user_dictionary":"userdict_test.txt"
+                }
+            },
+            "analyzer":{
+                "nori_analyzer":{
+                    "type":"custom",
+                    "tokenizer":"korean_nori_tokenizer"
+                }
+            }
+        }
+    }
+}
+
+POST korean_analyzer1/_analyze
+{
+  "analyzer":"nori_analyzer",
+  "text":"안녕하세요. 이준입니다."
+}
