@@ -2,6 +2,8 @@
 All about Elastic Open Sources(Elasticsearch, Logstash, Beats, Kibana...)
 
 ## skills
+* Kibana
 * Elasticsearch
 * Logstash
-* Kibana
+* File Beats
+
